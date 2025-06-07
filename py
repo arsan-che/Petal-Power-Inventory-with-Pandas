@@ -20,3 +20,11 @@ inventory['in_stock'] = inventory['quantity'] > 0
 # Add a new column 'total_value' calculated by multiplying price by quantity
 inventory['total_value'] = inventory['price'] * inventory['quantity']
 # print(inventory)
+# Create a lambda function to combine product_type and product_description into one string
+combine_lambda = lambda row: f'{row.product_type} - {row.product_description}'
+
+# Apply the lambda function row-wise to create a 'full_description' column
+inventory['full_description'] = inventory.apply(combine_lambda, axis=1)
+
+# Print the updated inventory DataFrame with new columns
+print(inventory)
