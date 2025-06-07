@@ -13,3 +13,10 @@ product_request = staten_island['product_description']
 
 # Filter inventory for products located in Brooklyn AND of product type 'seeds'
 seed_request = inventory[(inventory['location'] == 'Brooklyn') & (inventory['product_type'] == 'seeds')]
+# Add a new column 'in_stock' that is True if quantity > 0, else False
+inventory['in_stock'] = inventory['quantity'] > 0
+# print(inventory)
+
+# Add a new column 'total_value' calculated by multiplying price by quantity
+inventory['total_value'] = inventory['price'] * inventory['quantity']
+# print(inventory)
